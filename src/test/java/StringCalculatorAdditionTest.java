@@ -25,7 +25,8 @@ public class StringCalculatorAdditionTest {
                 {"", 0},
                 {"1", 1},
                 {"1,2", 3},
-                {"1,2,3,4", 10}
+                {"1,2,3,4", 10},
+                {"1\\n2,3", 6}
         });
     }
 
