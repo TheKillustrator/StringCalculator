@@ -1,3 +1,4 @@
+import exception.NegativeNumberException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class StringCalculator {
                 int addendInt = Integer.parseInt(addend);
 
                 if (addendInt < 0) {
-                    throw new Exception("Negatives not allowed");
+                    throw new NegativeNumberException();
                 } else {
                     sum += addendInt;
                 }
