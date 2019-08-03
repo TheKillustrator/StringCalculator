@@ -17,4 +17,9 @@ public class StringCalculatorTests {
         int sum = Integer.valueOf(calculator.add(""));
         assertNotNull(sum);
     }
+
+    @Test(expected = Exception.class)
+    public void negativeNumbersThrowException(){
+        int sum = calculator.add("1,-1,2,-2");
+    }
 }
