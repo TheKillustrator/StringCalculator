@@ -9,7 +9,7 @@ public class StringCalculator {
     private static final String delimiterSpecBegin = "//";
     private static final String delimiterSpecEnd = "\n";
 
-    public int add(String input) {
+    public int add(String input) throws Exception {
         int sum = 0;
 
         if (StringUtils.isNotEmpty(input)) {
@@ -18,7 +18,13 @@ public class StringCalculator {
 
             List<String> addends = Arrays.asList(addendString.split(delimiterRegex));
             for (String addend : addends) {
-                sum += Integer.parseInt(addend);
+                int addendInt = Integer.parseInt(addend);
+
+                if (addendInt < 0) {
+                    throw new Exception("Negatives not allowed");
+                } else {
+                    sum += addendInt;
+                }
             }
         }
 

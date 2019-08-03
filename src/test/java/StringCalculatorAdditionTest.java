@@ -40,7 +40,7 @@ public class StringCalculatorAdditionTest {
     }
 
     @Test
-    public void addReturnsTheCorrectSum() {
+    public void addReturnsTheCorrectSum() throws Exception {
         assertEquals("Incorrect sum returned", expectedSum, calculator.add(input));
     }
 }
