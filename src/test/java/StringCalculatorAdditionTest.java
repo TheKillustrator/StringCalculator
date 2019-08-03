@@ -27,7 +27,8 @@ public class StringCalculatorAdditionTest {
                 {"1,2", 3},
                 {"1,2,3,4", 10},
                 {"1\n2,3", 6},
-                {"//;\n1;2", 3}
+                {"//;\n1;2", 3},
+                {"//and\n1and2", 3}
         });
     }
 
