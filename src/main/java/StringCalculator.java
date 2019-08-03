@@ -6,15 +6,15 @@ import java.util.List;
 public class StringCalculator {
 
     public int add(String input) {
+        int sum = 0;
+
         if (StringUtils.isNotEmpty(input)) {
             List<String> addends = Arrays.asList(input.split(","));
-            int sum = 0;
-            for (String addend : addends){
+            for (String addend : addends) {
                 sum += Integer.parseInt(addend);
             }
-            return sum;
-        } else {
-            return 0;
         }
+
+        return sum;
     }
 }
