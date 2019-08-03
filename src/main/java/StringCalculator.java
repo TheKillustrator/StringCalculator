@@ -1,6 +1,7 @@
 import exception.NegativeNumberException;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,14 +19,20 @@ public class StringCalculator {
             String addendString = getAddendString(input);
 
             List<String> addends = Arrays.asList(addendString.split(delimiterRegex));
+            List<Integer> negatives = new ArrayList<>();
+
             for (String addend : addends) {
                 int addendInt = Integer.parseInt(addend);
 
                 if (addendInt < 0) {
-                    throw new NegativeNumberException();
+                    negatives.add(addendInt);
                 } else {
                     sum += addendInt;
                 }
+            }
+
+            if (!negatives.isEmpty()) {
+                throw new NegativeNumberException(negatives);
             }
         }
 
