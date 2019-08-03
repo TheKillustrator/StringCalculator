@@ -5,18 +5,16 @@ import java.util.List;
 
 public class StringCalculator {
 
+    private static final String defaultDelimiterRegex = ",|\n";
+    private static final String delimiterSpecBegin = "//";
+    private static final String delimiterSpecEnd = "\n";
+
     public int add(String input) {
         int sum = 0;
 
         if (StringUtils.isNotEmpty(input)) {
-
-            String delimiterRegex = ",|\n";
-            String addendString = input;
-
-            if (input.startsWith("//")) {
-                delimiterRegex = input.substring(input.indexOf("//")+2, input.indexOf("\n"));
-                addendString = input.substring(input.indexOf("\n")+1);
-            }
+            String delimiterRegex = getDelimiterRegex(input);
+            String addendString = getAddendString(input);
 
             List<String> addends = Arrays.asList(addendString.split(delimiterRegex));
             for (String addend : addends) {
@@ -25,5 +23,19 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    private String getDelimiterRegex(String input) {
+        if (input.startsWith(delimiterSpecBegin)) {
+            return input.substring(input.indexOf(delimiterSpecBegin) + 2, input.indexOf(delimiterSpecEnd));
+        }
+        return defaultDelimiterRegex;
+    }
+
+    private String getAddendString(String input) {
+        if (input.startsWith(delimiterSpecBegin)) {
+            return input.substring(input.indexOf(delimiterSpecEnd) + 1);
+        }
+        return input;
     }
 }
