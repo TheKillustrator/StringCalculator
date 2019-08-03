@@ -43,11 +43,27 @@ public class StringCalculator {
 
     private String getDelimiterRegex(String input) {
         if (input.startsWith(delimiterSpecBegin)) {
-            String delimiterRegex = input.substring(input.indexOf(delimiterSpecBegin) + 2, input.indexOf(delimiterSpecEnd));
-            if (delimiterRegex.startsWith(multiCharDelimiterBegin) && delimiterRegex.endsWith(multiCharDelimiterEnd)) {
-                delimiterRegex = delimiterRegex.substring(1, delimiterRegex.length() - 1);
+            String delimiterSpec = input.substring(input.indexOf(delimiterSpecBegin) + 2, input.indexOf(delimiterSpecEnd));
+
+            List<String> specComponents = new ArrayList<>();
+
+            if (delimiterSpec.startsWith(multiCharDelimiterBegin) && delimiterSpec.endsWith(multiCharDelimiterEnd)) {
+                delimiterSpec = delimiterSpec.substring(1, delimiterSpec.length() - 1);
+                specComponents = Arrays.asList(delimiterSpec.split("\\" + multiCharDelimiterEnd + "\\" + multiCharDelimiterBegin));
+            } else {
+                specComponents.add(delimiterSpec);
             }
-            return "\\Q" + delimiterRegex + "\\E";
+
+            List<String> delimiters = new ArrayList<>();
+            for (String component : specComponents) {
+                delimiters.add("\\Q" + component + "\\E");
+            }
+            String delimiterRegex = delimiters.toString()
+                    .replace(", ", "|")
+                    .replace("[", "")
+                    .replace("]", "");
+
+            return delimiterRegex;
         }
         return defaultDelimiterRegex;
     }
