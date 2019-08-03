@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -54,14 +55,7 @@ public class StringCalculator {
                 specComponents.add(delimiterSpec);
             }
 
-            List<String> delimiters = new ArrayList<>();
-            for (String component : specComponents) {
-                delimiters.add("\\Q" + component + "\\E");
-            }
-            String delimiterRegex = delimiters.toString()
-                    .replace(", ", "|")
-                    .replace("[", "")
-                    .replace("]", "");
+            String delimiterRegex = specComponents.stream().map((s) -> "\\Q" + s + "\\E").collect(Collectors.joining("|"));
 
             return delimiterRegex;
         }
