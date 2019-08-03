@@ -10,6 +10,8 @@ public class StringCalculator {
     private static final String defaultDelimiterRegex = ",|\n";
     private static final String delimiterSpecBegin = "//";
     private static final String delimiterSpecEnd = "\n";
+    private static final String multiCharDelimiterBegin = "[";
+    private static final String multiCharDelimiterEnd = "]";
 
     public int add(String input) throws Exception {
         int sum = 0;
@@ -42,7 +44,7 @@ public class StringCalculator {
     private String getDelimiterRegex(String input) {
         if (input.startsWith(delimiterSpecBegin)) {
             String delimiterRegex = input.substring(input.indexOf(delimiterSpecBegin) + 2, input.indexOf(delimiterSpecEnd));
-            if (delimiterRegex.startsWith("[") && delimiterRegex.endsWith("]")) {
+            if (delimiterRegex.startsWith(multiCharDelimiterBegin) && delimiterRegex.endsWith(multiCharDelimiterEnd)) {
                 delimiterRegex = delimiterRegex.substring(1, delimiterRegex.length() - 1);
             }
             return "\\Q" + delimiterRegex + "\\E";
