@@ -41,7 +41,11 @@ public class StringCalculator {
 
     private String getDelimiterRegex(String input) {
         if (input.startsWith(delimiterSpecBegin)) {
-            return input.substring(input.indexOf(delimiterSpecBegin) + 2, input.indexOf(delimiterSpecEnd));
+            String delimiterRegex = input.substring(input.indexOf(delimiterSpecBegin) + 2, input.indexOf(delimiterSpecEnd));
+            if (delimiterRegex.startsWith("[") && delimiterRegex.endsWith("]")) {
+                delimiterRegex = delimiterRegex.substring(1, delimiterRegex.length() - 1);
+            }
+            return "\\Q" + delimiterRegex + "\\E";
         }
         return defaultDelimiterRegex;
     }
