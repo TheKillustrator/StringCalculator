@@ -23,7 +23,8 @@ public class StringCalculatorAdditionTest {
     public static Iterable<Object[]> data() throws Throwable {
         return Arrays.asList(new Object[][]{
                 {"", 0},
-                {"1", 1}
+                {"1", 1},
+                {"1,2", 3}
         });
     }
 
