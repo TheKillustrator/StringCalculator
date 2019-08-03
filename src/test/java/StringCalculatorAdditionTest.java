@@ -22,7 +22,8 @@ public class StringCalculatorAdditionTest {
     @Parameterized.Parameters(name = "Test {index}: input={0}, expected sum={1}")
     public static Iterable<Object[]> data() throws Throwable {
         return Arrays.asList(new Object[][]{
-                {"", 0}
+                {"", 0},
+                {"1", 1}
         });
     }
 
