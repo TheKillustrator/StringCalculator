@@ -36,6 +36,7 @@ public class StringCalculatorAdditionTest {
                 {"//[***]\n1***2***3", 6}
 
                 //TODO edge case "//\n\n1\n2" = 3, is valid? exception?
+                //TODO are multi-character delimiters not enclosed in [] invalid?
         });
     }
 
