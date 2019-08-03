@@ -30,6 +30,7 @@ public class StringCalculatorAdditionTest {
                 {"1\n2,3", 6},
                 {"//;\n1;2", 3},
                 {"//and\n1and2", 3},
+                {"1000,2", 1002},
                 {"1001,2", 2}
 
                 //TODO edge case "//\n\n1\n2" = 3, is valid? exception?
