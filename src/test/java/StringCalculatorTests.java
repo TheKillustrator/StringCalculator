@@ -1,3 +1,4 @@
+import exception.NegativeNumberException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class StringCalculatorTests {
 
     @Test
     public void negativeNumbersThrowException() throws Exception {
-        expectedEx.expect(Exception.class);
+        expectedEx.expect(NegativeNumberException.class);
         expectedEx.expectMessage("Negatives not allowed: [-1, -2]");
         int sum = calculator.add("1,-1,2,-2");
     }
