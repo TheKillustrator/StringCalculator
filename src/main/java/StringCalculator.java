@@ -14,7 +14,7 @@ public class StringCalculator {
     public int add(String input) throws Exception {
         int sum = 0;
 
-        if (StringUtils.isNotEmpty(input)) {
+        if (StringUtils.isNotBlank(input)) {
             String delimiterRegex = getDelimiterRegex(input);
             String addendString = getAddendString(input);
 
