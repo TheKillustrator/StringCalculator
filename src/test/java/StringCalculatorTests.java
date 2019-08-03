@@ -26,7 +26,7 @@ public class StringCalculatorTests {
     @Test
     public void negativeNumbersThrowException() throws Exception {
         expectedEx.expect(Exception.class);
-        expectedEx.expectMessage("Negatives not allowed");
+        expectedEx.expectMessage("Negatives not allowed: [-1, -2]");
         int sum = calculator.add("1,-1,2,-2");
     }
 }
